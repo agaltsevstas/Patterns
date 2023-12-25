@@ -1,0 +1,9 @@
+﻿  ExcludeClassOne.cpp
+  ExcludeClassTwo.cpp
+  ExcludeFactoryClassTwo.cpp
+  FactoryManager.cpp
+  FactoryClassOne.cpp
+  FactoryClassTwo.cpp
+  main.cpp
+  Создание кода...
+  AbstractFactory.vcxproj -> C:\Users\Agaltsev\YandexDisk\Компьютер SOSIMBA\Programming\Patterns\AbstractFactory\x64\Debug\AbstractFactory.exe
