@@ -12,6 +12,9 @@ namespace pqxx
     class stream_to;
 }
 
+/*!
+ * @brief Фасад (Fasade) - определяет интерфейс более высокого уровня, который предоставить более простой интерфейс для всей подсистемы, состоящей из множества объектов.
+ */
 class DatabaseFacade
 {
     DatabaseFacade() noexcept;
