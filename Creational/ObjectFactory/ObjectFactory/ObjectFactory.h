@@ -131,7 +131,9 @@ class ClassFactory final
 
     using ClassUniquePtr = std::unique_ptr<Base>;
     using ClassSharedPtr = std::shared_ptr<Base>;
-    typedef ClassSharedPtr (*TBase)(const Args&...);
+    using TBase = std::function<ClassSharedPtr(const Args&...)>;
+//    using TBase = ClassSharedPtr (*)(const Args&...); // Function pointer
+//    typedef ClassSharedPtr(*TBase)(const Args&...); // Function pointer
     using FactoryMap = std::map<ID, TBase>;
 
 public:
