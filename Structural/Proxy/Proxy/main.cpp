@@ -5,7 +5,6 @@
  * @brief Прокси (Proxy) -  имеет тот же интерфейс, что и реальный класс. Выступает прослойкой между пользователем и реальным классом. Он выполняет функции (контроль доступа, кеширование, изменение запроса и прочее), не изменяя при этом поведение класса.
  */
 
-
 int main(int argc, const char * argv[])
 {
     auto& objectFactory = CollectionClassesProxy<std::string, Employee, int, std::string>::Instance(); /// Фабрика объектов производных классов от Employee
@@ -39,3 +38,10 @@ int main(int argc, const char * argv[])
     }
     return 0;
 }
+
+// Явно инстанцированная шаблонная функция/класс могут иметь копии .cpp файлах, что может тормозить сам процесс компиляции и сборки. Можно указать компилятору не инстанцировать шаблон в данной единице трансляции, для этого перед инстанцированием указать extern - это уменьшает время компиляции.
+extern template class CollectionClassesProxy<std::string, Employee, int, std::string>;
+extern template void CollectionClassesProxy<std::string, Employee, int, std::string>::Add<Employee1>(const std::string&);
+extern template void CollectionClassesProxy<std::string, Employee, int, std::string>::Add<Employee2>(const std::string&);
+extern template void CollectionClassesProxy<std::string, Employee, int, std::string>::Add<Employee3>(const std::string&);
+extern template void CollectionClassesProxy<std::string, Employee, int, std::string>::Add<Employee4>(const std::string&);
