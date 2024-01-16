@@ -50,7 +50,7 @@ public:
      * @param iArgs - Аргументы зарегистрированного класса
      * @return Созданный объект зарегистрированного класса
      */
-    std::shared_ptr<Base> Create(const ID& iID, const Args&... iArgs) const;
+    std::shared_ptr<Base> Create(const ID& iID, Args&&... iArgs) const;
 };
 
 #endif /* CollectionClasses_hpp */

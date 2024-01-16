@@ -19,7 +19,7 @@ class ObjectFactory final
     ObjectFactory& operator = (const ObjectFactory&) = delete;
 
     using ClassSharedPtr = std::shared_ptr<Base>;
-    typedef ClassSharedPtr (*TBase)(const Args&...);
+    typedef ClassSharedPtr (*TBase)(Args&&...);
     using FactoryMap = std::map<ID, TBase>;
 
 public:
@@ -75,12 +75,12 @@ public:
      * @param iArgs - Аргументы зарегистрированного класса
      * @return Созданный объект зарегистрированного класса
      */
-    ClassSharedPtr Create(const ID& iID, const Args&... iArgs) const
+    ClassSharedPtr Create(const ID& iID, Args&&... iArgs) const
     {
         if (auto it = _classes.find(iID); it != _classes.end())
         {
             auto& [_id, _class] = *it;
-            return _class(iArgs...); // Вызывается метод Register
+            return _class(std::forward<Args>(iArgs)...); // Вызывается метод Register
         }
 
         //throw std::range_error(std::format("key [{}] is not registered", iID)); // XCode не хочет подхватывать
@@ -94,10 +94,9 @@ private:
      * @return Созданный объект класса
      */
     template<class Derived>
-    static ClassSharedPtr Register(const Args&... iArgs)
+    static ClassSharedPtr Register(Args&&... iArgs)
     {
-        return std::make_shared<Derived>(iArgs...);
-//        return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
+        return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
     }
 
 private:
@@ -134,9 +133,9 @@ bool CollectionClassesProxy<ID, Base, Args...>::IsRegistered(const ID& iID) cons
 }
 
 template <typename ID, class Base, typename ...Args>
-std::shared_ptr<Base> CollectionClassesProxy<ID, Base, Args...>::Create(const ID& iID, const Args&... iArgs) const
+std::shared_ptr<Base> CollectionClassesProxy<ID, Base, Args...>::Create(const ID& iID, Args&&... iArgs) const
 {
-    return ObjectFactory<ID, Base, Args...>::Instance().Create(iID, iArgs...);
+    return ObjectFactory<ID, Base, Args...>::Instance().Create(iID, std::forward<Args>(iArgs)...);
 }
 
 /*

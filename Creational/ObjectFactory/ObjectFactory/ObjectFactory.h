@@ -86,13 +86,13 @@ public:
      * @return Созданный объект зарегистрированного класса
      */
     template <class Derived, typename... Args>
-    std::shared_ptr<Derived> Create(ID iID, const Args&... iArgs) const
+    std::shared_ptr<Derived> Create(ID iID, Args&&... iArgs) const
     {
         static_assert(std::is_base_of<Base, Derived>::value, "Factory::registerType doesn't accept this type because doesn't derive from base class"); // Проверка Derived на принадлежность к Base
         if (auto it = _classes.find(iID); it != _classes.end())
         {
 //            auto& [_id, _class] = *it;
-            return std::make_shared<Derived>(iArgs...);
+            return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
         }
         
 //        throw std::range_error(std::format("key [{}] is not registered", iID)); XCode - errror
@@ -106,10 +106,9 @@ private:
      * @return Созданный объект класса
      */
     template<class Derived, typename... Args>
-    ClassUniquePtr Register(const Args&... iArgs)
+    ClassUniquePtr Register(Args&&... iArgs)
     {
-        return std::make_unique<Derived>(iArgs...);
-//        return std::make_unique<Derived>(std::forward<Args>(iArgs)...); // error
+        return std::make_unique<Derived>(std::forward<Args>(iArgs)...);
     }
     
 private:
@@ -131,9 +130,9 @@ class ClassFactory final
 
     using ClassUniquePtr = std::unique_ptr<Base>;
     using ClassSharedPtr = std::shared_ptr<Base>;
-    using TBase = std::function<ClassSharedPtr(const Args&...)>;
-//    using TBase = ClassSharedPtr (*)(const Args&...); // Function pointer
-//    typedef ClassSharedPtr(*TBase)(const Args&...); // Function pointer
+    using TBase = std::function<ClassSharedPtr(Args&&...)>;
+//    using TBase = ClassSharedPtr (*)(Args&&...); // Function pointer
+//    typedef ClassSharedPtr(*TBase)(Args&&...); // Function pointer
     using FactoryMap = std::map<ID, TBase>;
 
 public:
@@ -189,12 +188,12 @@ public:
      * @param iArgs - Аргументы зарегистрированного класса
      * @return Созданный объект зарегистрированного класса
      */
-    std::shared_ptr<Base> Create(ID iID, const Args&... iArgs) const
+    std::shared_ptr<Base> Create(ID iID, Args&&... iArgs) const
     {
         if (auto it = _classes.find(iID); it != _classes.end())
         {
             auto& [_id, _class] = *it;
-            return _class(iArgs...); // Вызывается метод Register
+            return _class(std::forward<Args>(iArgs)...); // Вызывается метод Register
         }
 
 //        throw std::range_error(std::format("key [{}] is not registered", iID));
@@ -218,10 +217,9 @@ private:
      * @return Созданный объект класса
      */
     template<class Derived>
-    static ClassSharedPtr Register(const Args&... iArgs)
+    static ClassSharedPtr Register(Args&&... iArgs)
     {
-        return std::make_shared<Derived>(iArgs...);
-//        return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
+        return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
     }
 
 private:
