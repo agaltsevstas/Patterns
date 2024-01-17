@@ -266,7 +266,7 @@ int main()
         }
 
         // constexpr
-        {
+        { 
             auto square1 = CONSTEXPR::Square(integer_num); // Вызов int Square(int);
             auto square2 = CONSTEXPR::Square(floating_num); // Вызов float Square(float);
             auto square3 = CONSTEXPR::Square(boolean);  // Вызов bool Square(bool);
