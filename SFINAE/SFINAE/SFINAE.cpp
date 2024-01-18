@@ -86,8 +86,8 @@ namespace SFINAE
 			return number.value * number.value;
 		}
     
-//        template<typename T>
-//        typename std::enable_if<std::has_begin<T>::value, T>::type Square(const T& number)
+        // template<typename T>
+        // typename std::enable_if<std::has_begin<T>::value, T>::type Square(const T& number)
 	}
 
 	/*
