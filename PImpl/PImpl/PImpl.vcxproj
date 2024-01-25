@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{cf3bbfe9-5a52-4576-8ce8-1861c186d009}</ProjectGuid>
-    <RootNamespace>SFINAE</RootNamespace>
+    <ProjectGuid>{9b3f4084-c8ea-46c5-b4a8-2d3782c2fc8f}</ProjectGuid>
+    <RootNamespace>PImpl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,7 +104,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SFINAE.cpp" />
+    <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SFINAE.h" />
+    <ClInclude Include="Employee.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

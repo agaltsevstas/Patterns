@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		8076FD492B235FDE0067767B /* SFINAE */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SFINAE; sourceTree = BUILT_PRODUCTS_DIR; };
 		8076FD532B235FF50067767B /* SFINAE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFINAE.cpp; sourceTree = "<group>"; };
+		80EC04382B6236D40039AA2A /* SFINAE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFINAE.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		8076FD4B2B235FDE0067767B /* SFINAE */ = {
 			isa = PBXGroup;
 			children = (
+				80EC04382B6236D40039AA2A /* SFINAE.h */,
 				8076FD532B235FF50067767B /* SFINAE.cpp */,
 			);
 			path = SFINAE;

@@ -18,11 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Matching.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Matching.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{cf3bbfe9-5a52-4576-8ce8-1861c186d009}</ProjectGuid>
-    <RootNamespace>SFINAE</RootNamespace>
+    <ProjectGuid>{4f0ac273-caa9-4637-bd24-9d958a6ec848}</ProjectGuid>
+    <RootNamespace>Matching</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,12 +133,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="SFINAE.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SFINAE.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
