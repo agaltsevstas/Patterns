@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80CBEEB72B473C8D00467FD5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80CBEEB62B473C8D00467FD5 /* main.cpp */; };
+		80EC046A2B650CE20039AA2A /* CRTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80EC04692B650CE20039AA2A /* CRTP.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +24,8 @@
 
 /* Begin PBXFileReference section */
 		80CBEEB32B473C8D00467FD5 /* CRTP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CRTP; sourceTree = BUILT_PRODUCTS_DIR; };
-		80CBEEB62B473C8D00467FD5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		80CBEEBD2B473CC400467FD5 /* CRTP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTP.h; sourceTree = "<group>"; };
+		80EC04692B650CE20039AA2A /* CRTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRTP.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		80CBEEB52B473C8D00467FD5 /* CRTP */ = {
 			isa = PBXGroup;
 			children = (
-				80CBEEB62B473C8D00467FD5 /* main.cpp */,
+				80EC04692B650CE20039AA2A /* CRTP.cpp */,
 				80CBEEBD2B473CC400467FD5 /* CRTP.h */,
 			);
 			path = CRTP;
@@ -121,7 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80CBEEB72B473C8D00467FD5 /* main.cpp in Sources */,
+				80EC046A2B650CE20039AA2A /* CRTP.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
