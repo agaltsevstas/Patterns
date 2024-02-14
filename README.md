@@ -40,7 +40,36 @@ Patterns
 CRTP
 --------------
 Сuriously Recurring Template Pattern - рекурсивный шаблон: класс Derived наследуется от шаблонного класса Base, использующего Derived как шаблонный параметр T. Через метод базового класса Base можно вызвать метод наследуемого класса Derived, используя статический полиморфизм вместо динамического полиморфизма (без таблицы виртуальных функций): <br>
-```static_cast<T*>(this)->method()```
+```
+template <typename T>
+class Base
+{
+public:
+    void interface1() // 1 Cпособ
+    {
+        static_cast<T*>(this)->implementation1();
+    };
+    
+    static void interface2()
+    {
+        T::implementation2(); // 2 Способ: static
+    };
+};
+
+class Derived : public Base<Derived>
+{
+public:
+    void implementation1()
+    {
+        std::cout << "interface1 Derived" << std::endl;
+    }
+    
+    static void implementation2()
+    {
+        std::cout << "interface2 Derived" << std::endl;
+    }
+};
+```
 
 Плюсы:
  - делается во время компиляции (compile), а не во время исполнения (runtime)
