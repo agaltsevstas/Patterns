@@ -18,4 +18,7 @@ int main(int argc, const char * argv[])
     CRTP::Derived derived;
     derived.interface1();
     derived.interface2();
+    
+    auto& singleton1 = CRTP::SINGLETON::Singleton1::Instance();
+    auto& singleton2 = CRTP::SINGLETON::Singleton2::Instance();
 }

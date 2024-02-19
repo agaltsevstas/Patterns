@@ -7,7 +7,7 @@
 class IBase
 {
 protected:
-    IBase() {}
+    IBase() = default;
     IBase(const IBase&) = delete;
     IBase& operator=(const IBase&) = delete;
     ~IBase() = default;
@@ -30,7 +30,7 @@ protected:
 
 class IAbstractFactory : public IBase
 {
-    typedef std::map<std::string, IAbstractFactory*> FactoryMap;
+    using FactoryMap = std::map<std::string, IAbstractFactory*>;
 
 public:
 	//static IAbstractFactory* Instance() noexcept;
