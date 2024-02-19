@@ -21,4 +21,6 @@ int main(int argc, const char * argv[])
     
     auto& singleton1 = CRTP::SINGLETON::Singleton1::Instance();
     auto& singleton2 = CRTP::SINGLETON::Singleton2::Instance();
+    
+    return 0;
 }
