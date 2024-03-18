@@ -1,6 +1,10 @@
 #include <iostream>
 
 /*
+ Сайты: https://www.geeksforgeeks.org/bridge-method-c-design-patterns/
+ */
+
+/*
  Мост (bridge) - обеспечивает отделение абстракции объекта от его реализации (кросс-платформенные приложения, поддержание разных баз данных):
  Абстракция: abstract class Figure от него наследуются class Rectangle, Circle. virtual method Draw();
  Реализация: По идее реализация должна быть внутри метода Draw() классов Rectangle, Circle. Однако, реализация выносится в отдельные классы RectangleRenderer, CircleRenderer, которые наследуются от abstract class Renderer с virtual method Render(). В конструктор Rectangle/Circle передается ссылка на экземпляр класса RectangleRenderer/CircleRenderer и внутри метода Draw() вызывается метод Render экземпляра класса RectangleRenderer/CircleRenderer.
