@@ -2,6 +2,7 @@
 #define Database_hpp
 
 #include <iostream>
+#include <array>
 
 namespace pqxx
 {

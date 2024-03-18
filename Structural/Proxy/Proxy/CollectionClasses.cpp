@@ -19,7 +19,8 @@ class ObjectFactory final
     ObjectFactory& operator = (const ObjectFactory&) = delete;
 
     using ClassSharedPtr = std::shared_ptr<Base>;
-    typedef ClassSharedPtr (*TBase)(Args&&...);
+    using TBase = std::function<ClassSharedPtr(Args&&...)>;
+    //    typedef ClassSharedPtr (*TBase)(Args&&...);
     using FactoryMap = std::map<ID, TBase>;
 
 public:

@@ -4,7 +4,7 @@
 
 int main(int argc, const char * argv[]) 
 {
-    auto& singleton1 = Singleton1::Instance();
-    auto& singleton2 = Singleton2::Instance();
+    [[maybe_unused]] auto& singleton1 = Singleton1::Instance();
+    [[maybe_unused]] auto& singleton2 = Singleton2::Instance();
     return 0;
 }
