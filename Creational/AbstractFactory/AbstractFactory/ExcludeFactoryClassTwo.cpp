@@ -1,4 +1,4 @@
-#include "ExcludeFactoryClassTwo.h"
+﻿#include "ExcludeFactoryClassTwo.h"
 
 #include "cassert"
 

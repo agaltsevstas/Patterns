@@ -1,11 +1,11 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string>
 #include <cassert>
 
 #include "AbstractFactory.h"
 
-/// Интерфейс для вызова отдельных классов вне абстрактоной фабрики
+/// РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ РІС‹Р·РѕРІР° РѕС‚РґРµР»СЊРЅС‹С… РєР»Р°СЃСЃРѕРІ РІРЅРµ Р°Р±СЃС‚СЂР°РєС‚РѕРЅРѕР№ С„Р°Р±СЂРёРєРё
 class IExcludeFactoryClassOne : public IBase
 {
 public:

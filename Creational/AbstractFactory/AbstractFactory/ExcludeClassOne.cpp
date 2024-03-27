@@ -1,4 +1,4 @@
-#include "ExcludeFactoryClassOne.h"
+﻿#include "ExcludeFactoryClassOne.h"
 
 
 class ExcludeClassOne : public IExcludeFactoryClassOne
