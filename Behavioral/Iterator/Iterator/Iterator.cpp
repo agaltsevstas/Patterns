@@ -19,22 +19,8 @@ class List
     struct Node
     {
         Node() = default;
-        explicit Node(const T& iValue, Node* iPrev = nullptr, Node* iNext = nullptr) noexcept
-        {
-            value = iValue;
-            prev = iPrev;
-            next = iNext;
-        }
-        
-        explicit Node(T&& iValue, Node* iPrev = nullptr, Node* iNext = nullptr) noexcept
-        {
-            value = std::move(iValue);
-            prev = iPrev;
-            next = iNext;
-        }
-        
         template <typename ...Args>
-        explicit Node(Node* iPrev, Node* iNext, Args&& ...args) noexcept :
+        Node(Node* iPrev, Node* iNext, Args&& ...args) noexcept :
         prev(iPrev),
         next(iNext),
         value(std::forward<Args>(args)...)
@@ -75,7 +61,7 @@ private:
         Node* begin_other = other._begin;
         if (!begin_other)
             return;
-        _begin = new Node(begin_other->value, nullptr, nullptr);
+        _begin = new Node(nullptr, nullptr, begin_other->value);
         _end = _begin;
         begin_other = begin_other->next;
 
@@ -180,13 +166,13 @@ List<T>::List(const List<T>::Iterator& begin, const List<T>::Iterator& end)
     {
         if (_end)
         {
-            Node* node = new Node(*it, _end, nullptr);
+            Node* node = new Node(_end, nullptr, *it);
             _end->next = node;
             _end = node;
         }
         else
         {
-            _begin = _end = new Node(*it);
+            _begin = _end = new Node(nullptr, nullptr, *it);
         }
 
         ++_size;
@@ -321,14 +307,14 @@ List<T>::Iterator List<T>::Insert(const Iterator& it, const T& value)
 {
     if (!it._node)
     {
-        _begin = _end = new Node(value);
+        _begin = _end = new Node(nullptr, nullptr, value);
         return Iterator(*this, _end);
     }
     
     Node* tmp = it._node;
     Node* tmpPrev = it._node->prev;
     Node* tmpNext = it._node->next;
-    Node* node = new Node(value);
+    Node* node = new Node(nullptr, nullptr, value);
 
     if (tmpPrev && tmpNext) // Вставка в середину
     {
