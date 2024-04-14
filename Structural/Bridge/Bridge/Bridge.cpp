@@ -32,12 +32,12 @@ public:
     }
 };
  
-class SquareRenderer : public Renderer
+class RectangleRenderer : public Renderer
 {
 public:
     void Render() override
     {
-        std::cout << "SquareRenderer" << std::endl;
+        std::cout << "RectangleRenderer" << std::endl;
     }
 };
  
@@ -59,10 +59,10 @@ private:
     Renderer& _renderer;
 };
  
-class Square : public Figure
+class Rectangle : public Figure
 {
 public:
-    Square(Renderer& renderer) noexcept :
+    Rectangle(Renderer& renderer) noexcept :
     _renderer(renderer)
     {
     }
@@ -80,13 +80,13 @@ private:
 int main()
 {
     CircleRenderer circleRenderer;
-    SquareRenderer squareRenderer;
+    RectangleRenderer rectangleRenderer;
  
     Circle circle(circleRenderer);
-    Square square(squareRenderer);
+    Rectangle rectangle(rectangleRenderer);
  
     circle.Draw(); // Drawing: CircleRenderer
-    square.Draw(); // Drawing: SquareRenderer
+    rectangle.Draw(); // Drawing: RectangleRenderer
  
     return 0;
 }
