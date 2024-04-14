@@ -133,14 +133,14 @@ int main()
 {
     Square square(4u);
     square.TemplateMethod();
-    auto perimeterSquare = square.GetPerimeter();
-    auto areaSquare = square.GetArea();
-    auto volumeSquare = square.GetVolume();
+    [[maybe_unused]] auto perimeterSquare = square.GetPerimeter();
+    [[maybe_unused]] auto areaSquare = square.GetArea();
+    [[maybe_unused]] auto volumeSquare = square.GetVolume();
  
     Rectangle rectangle(1u, 2u, 3u);
     rectangle.TemplateMethod();
-    auto perimeterRectangle = rectangle.GetPerimeter();
-    auto areaRectangle = rectangle.GetArea();
-    auto volumeRectangle = rectangle.GetVolume();
+    [[maybe_unused]] auto perimeterRectangle = rectangle.GetPerimeter();
+    [[maybe_unused]] auto areaRectangle = rectangle.GetArea();
+    [[maybe_unused]] auto volumeRectangle = rectangle.GetVolume();
     return 0;
 }
