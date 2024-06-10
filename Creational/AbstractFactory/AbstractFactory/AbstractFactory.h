@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <cassert>
 #include <map>
@@ -13,17 +13,17 @@ protected:
     ~IBase() = default;
 };
 
-/// Декларация интерфейсного конструктора
+/// Р”РµРєР»Р°СЂР°С†РёСЏ РёРЅС‚РµСЂС„РµР№СЃРЅРѕРіРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 #define ICREATOR_DECLARATION(className)\
         private: static className* _instance;\
         public: static className* Instance(){return _instance;}\
         protected: className(){assert(_instance == nullptr); _instance = this;}
 
-        /// Реализация конструктора
+        /// Р РµР°Р»РёР·Р°С†РёСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 #define ICREATOR_REGISTRATION(className)\
         className* className::_instance = nullptr;
 
-        /// Реализация конструктора
+        /// Р РµР°Р»РёР·Р°С†РёСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 #define CREATOR_REGISTRATION(className)\
         static className _instance##className;
 

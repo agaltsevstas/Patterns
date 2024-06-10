@@ -1,8 +1,12 @@
 #ifndef ObjectPool_h
 #define ObjectPool_h
 
+
+#include <memory>
 #include <queue>
+#include <stdexcept>
 #include <unordered_map>
+
 
 template <class T>
 class ObjectPool
