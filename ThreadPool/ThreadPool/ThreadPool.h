@@ -26,7 +26,7 @@ namespace first_implementation
     class ThreadPool
     {
     public:
-        ThreadPool() : ThreadPool(10)
+        ThreadPool() : ThreadPool(std::thread::hardware_concurrency())
         {
             
         }
