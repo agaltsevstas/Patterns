@@ -3,18 +3,15 @@
 
 #include <any>
 #include <atomic>
-#include <iostream>
 #include <cassert>
-#include <chrono>
+#include <iostream>
 #include <functional>
 #include <future>
 #include <queue>
 #include <mutex>
-#include <map>
 #include <thread>
 #include <type_traits>
 #include <unordered_map>
-#include <unordered_set>
 #include <utility>
 
 
@@ -39,7 +36,7 @@ namespace first_implementation
                 _workers.emplace_back(
                     [this]
                     {
-                        while (!_stop)
+                        while (true)
                         {
                             std::function<void()> task;
                             {
@@ -48,8 +45,8 @@ namespace first_implementation
                                 if (_stop && _tasks.empty())
                                     return;
                                 
-                                    task = std::move(_tasks.front());
-                                    _tasks.pop();
+                                task = std::move(_tasks.front());
+                                _tasks.pop();
                             }
                             
                             if (task)
@@ -137,7 +134,10 @@ namespace second_implementation
                         task = std::move(_pool._tasks.front());
                         _pool._tasks.pop();
                     }
-                    task();
+                    
+                    if (task)
+                        task();
+                    
                     _pool._waitTask.notify_one();
                 }
             }
@@ -378,7 +378,7 @@ namespace third_implementation
     private:
         void Run()
         {
-            while (!quite) 
+            while (!quite) // TODO: нужно потом переделать на while (true), для _pool.AddTask(&Example::_Function, this); не зайдет
             {
                 std::unique_lock lock(_mutex);
                 _cv.wait(lock, [this]()->bool { return !_queue.empty() || quite; });

@@ -40,7 +40,7 @@ public:
 private:
     void _Function()
     {
-        
+
     }
     
     TPool _pool;
