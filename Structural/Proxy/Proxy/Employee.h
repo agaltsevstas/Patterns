@@ -14,7 +14,7 @@ public:
     }
     
     virtual ~Employee() {}
-    virtual std::string GetName() const noexcept = 0;
+    virtual const std::string& GetName() const = 0;
     
 protected:
     std::string _name;
@@ -29,7 +29,7 @@ class Employee1 : public Employee
 public:
     using Employee::Employee; // Заменяет конструктор дочернего класса
 //    Employee1(int number, const std::string& name) : Employee(number, name){}
-    std::string GetName() const noexcept override
+    const std::string& GetName() const override
     {
         return _name;
     }
@@ -41,7 +41,7 @@ public:
     using Employee::Employee; // Заменяет конструктор дочернего класса
 //    Employee2(int number, const std::string& name) : Employee(number, name){}
     
-    std::string GetName() const noexcept override
+    const std::string& GetName() const override
     {
         return _name;
     }
@@ -56,7 +56,7 @@ public:
     using Employee::Employee; // Заменяет конструктор дочернего класса
 //    Employee3(int number, const std::string& name) : Employee(number, name){}
     
-    std::string GetName() const noexcept override
+    const std::string& GetName() const override
     {
         return _name;
     }
@@ -71,7 +71,7 @@ public:
     using Employee::Employee; // Заменяет конструктор дочернего класса
 //    Employee4(int number, const std::string& name) : Employee(number, name){}
     
-    std::string GetName() const noexcept override
+    const std::string& GetName() const override
     {
         return _name;
     }

@@ -31,10 +31,17 @@ int main(int argc, const char * argv[])
     if (objectFactory.IsRegistered(typeid(Employee4).name()))
     {
         objectFactory.Remove(typeid(Employee4).name());
-        if (auto employee4 = objectFactory.Create(typeid(Employee4).name(), 4, "Employee4"))
-            std::cout << employee4->GetName() << std::endl;
-        else
+        try
+        {
+            if (auto employee4 = objectFactory.Create(typeid(Employee4).name(), 4, "Employee4"))
+                std::cout << employee4->GetName() << std::endl;
+            else
+                std::cout << "Класс: " << "Employee4 НЕ существует" << std::endl;
+        }
+        catch (...)
+        {
             std::cout << "Класс: " << "Employee4 НЕ существует" << std::endl;
+        }
     }
     return 0;
 }

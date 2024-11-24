@@ -2,6 +2,7 @@
 #include "Employee.h"
 
 #include <format>
+#include <functional>
 #include <map>
 #include <string>
 
@@ -84,7 +85,7 @@ public:
             return _class(std::forward<Args>(iArgs)...); // Вызывается метод Register
         }
 
-        //throw std::range_error(std::format("key [{}] is not registered", iID)); // XCode не хочет подхватывать
+        throw std::range_error(std::format("key [{}] is not registered", iID));
         return nullptr;
     }
 
