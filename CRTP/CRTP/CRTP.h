@@ -67,7 +67,7 @@ namespace CRTP
         template<class Derived>
         struct Singleton : private NonCopyable, private NonMoveable // Делаем приватные конструкторы базовых классов
         {
-            static Derived &Instance() noexcept
+            static Derived &Instance()
             {
                 static Derived instance;
                 return instance;

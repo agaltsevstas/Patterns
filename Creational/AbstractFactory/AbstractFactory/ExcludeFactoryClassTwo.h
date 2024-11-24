@@ -1,15 +1,15 @@
-﻿#pragma once
+#pragma once
 
 class IExcludeFactoryClassTwo
 {
 public:
-	static IExcludeFactoryClassTwo* Instance() noexcept;
+	static IExcludeFactoryClassTwo* Instance();
 
 	virtual void Start() = 0;
 	virtual void End() = 0;
 
 protected:
-	IExcludeFactoryClassTwo() noexcept;
+	IExcludeFactoryClassTwo();
 
 	virtual ~IExcludeFactoryClassTwo();
 

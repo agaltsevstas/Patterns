@@ -20,7 +20,7 @@ class List
     {
         Node() = default;
         template <typename ...Args>
-        Node(Node* iPrev, Node* iNext, Args&& ...args) noexcept :
+        Node(Node* iPrev, Node* iNext, Args&& ...args) :
         prev(iPrev),
         next(iNext),
         value(std::forward<Args>(args)...)
@@ -37,20 +37,20 @@ public:
     List() = default;
     List(const std::initializer_list<T>& list);
     List(const Iterator& begin, const Iterator& end);
-    List(const List& other) noexcept;
+    List(const List& other);
     List(List&& other) noexcept;
     ~List();
-    List& operator=(const List& other) noexcept;
+    List& operator=(const List& other);
     List& operator=(List&& other) noexcept;
     bool operator==(const List& other);
     void Swap(List& other) noexcept;
     bool Empty() const noexcept;
     size_t Size() const noexcept;
-    void Reverse() noexcept;
-    void Clear() noexcept;
+    void Reverse();
+    void Clear();
     
-    Iterator Begin() const noexcept;
-    Iterator End() const noexcept;
+    Iterator Begin() const;
+    Iterator End() const;
     Iterator Insert(const Iterator& it, const T& value);
     Iterator Erase(const Iterator& it);
     Iterator Erase(const Iterator& begin, const Iterator& end);
@@ -89,33 +89,33 @@ class List<T>::Iterator
 {
     friend class List;
 public:
-    Iterator(const List& list, Node* node) noexcept :
+    Iterator(const List& list, Node* node):
         _list(list)
     {
 
         _node = node;
     }
 
-    inline Iterator& operator++() noexcept
+    inline Iterator& operator++()
     {
         _node = _node ? _node->next : nullptr;
         return *this;
     }
 
-    inline Iterator operator++(int) noexcept
+    inline Iterator operator++(int)
     {
         Iterator temp = *this;
         ++(*this);
         return temp;
     }
 
-    inline Iterator& operator--() noexcept
+    inline Iterator& operator--()
     {
         _node = _node ? _node->prev : nullptr;
         return *this;
     }
 
-    inline Iterator operator--(int) noexcept
+    inline Iterator operator--(int)
     {
         Iterator temp = *this;
         --(*this);
@@ -129,14 +129,14 @@ public:
         return _node->value;
     }
 
-    inline T& operator->() const noexcept
+    inline T& operator->() const
     {
         if (!_node)
             throw std::runtime_error("iterator is null");
         return _node->value;
     }
 
-    inline Iterator& operator=(const Iterator& other) noexcept
+    inline Iterator& operator=(const Iterator& other)
     {
         if (&_list == &other._list)
             _node = other._node;
@@ -180,7 +180,7 @@ List<T>::List(const List<T>::Iterator& begin, const List<T>::Iterator& end)
 }
 
 template <class T>
-List<T>::List(const List& other) noexcept
+List<T>::List(const List& other)
 {
     Copy(other);
 }
@@ -200,7 +200,7 @@ List<T>::~List()
 }
 
 template <class T>
-List<T>& List<T>::operator=(const List& other) noexcept
+List<T>& List<T>::operator=(const List& other)
 {
     if (this == &other) // object = object
         return *this;
@@ -263,7 +263,7 @@ size_t List<T>::Size() const noexcept
 }
 
 template <class T>
-void List<T>::Reverse() noexcept
+void List<T>::Reverse()
 {
     auto tmpEnd = _end;
     while (_begin != _end)
@@ -276,7 +276,7 @@ void List<T>::Reverse() noexcept
 }
 
 template <class T>
-void List<T>::Clear() noexcept
+void List<T>::Clear()
 {
     while (_begin)
     {
@@ -291,13 +291,13 @@ void List<T>::Clear() noexcept
 }
 
 template <class T>
-List<T>::Iterator List<T>::Begin() const noexcept
+List<T>::Iterator List<T>::Begin() const
 {
     return Iterator(*this, _begin);
 };
 
 template <class T>
-List<T>::Iterator List<T>::End() const noexcept
+List<T>::Iterator List<T>::End() const
 {
     return _end ? Iterator(*this, _end->next) : Iterator(*this, nullptr); // return nullptr!!!
 };

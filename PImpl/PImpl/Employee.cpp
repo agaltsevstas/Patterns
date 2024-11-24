@@ -1,16 +1,16 @@
-﻿#include "Employee.hpp"
+#include "Employee.hpp"
 
-Director::Director() noexcept
+Director::Director()
 {
 
 }
 
-void Director::PrintName() const noexcept
+void Director::PrintName() const
 {
 	std::cout << "class name: " << _name << std::endl;
 }
 
-const std::string& Director::GetName() const noexcept
+const std::string& Director::GetName() const
 {
 	return _name;
 }

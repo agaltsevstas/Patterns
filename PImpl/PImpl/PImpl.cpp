@@ -14,44 +14,44 @@
 class HRManager::Impl
 {
 public:
-    Impl() noexcept;
+    Impl();
     ~Impl() = default;
 
-    void PrintName() const noexcept;
-    const std::string& GetName() const noexcept;
+    void PrintName() const;
+    const std::string& GetName() const;
 
 private:
     std::string _name;
 };
 
 
-HRManager::Impl::Impl() noexcept :
+HRManager::Impl::Impl() :
     _name("HRManager")
 {
 
 }
 
-void HRManager::Impl::PrintName() const noexcept
+void HRManager::Impl::PrintName() const
 {
     std::cout << "class name: " << _name << std::endl;
 }
 
-const std::string& HRManager::Impl::GetName() const noexcept
+const std::string& HRManager::Impl::GetName() const
 {
     return _name;
 }
 
-HRManager::HRManager() noexcept : _impl(new Impl())
+HRManager::HRManager() : _impl(new Impl())
 {
 
 }
 
-void HRManager::PrintName() const noexcept
+void HRManager::PrintName() const
 {
     _impl->PrintName();
 }
 
-const std::string& HRManager::GetName() const noexcept
+const std::string& HRManager::GetName() const
 {
     return _impl->GetName();
 }

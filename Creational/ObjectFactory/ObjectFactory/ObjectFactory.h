@@ -1,8 +1,11 @@
 #ifndef ObjectFactory_h
 #define ObjectFactory_h
 
+#include <format>
+#include <functional>
 #include <iostream>
 #include <map>
+
 
 /*!
  * @brief Фабрика объектов
@@ -51,7 +54,7 @@ public:
      * @brief Удаление класса
      * @param iID - Идентификатор  класса
      */
-    void Remove(ID iID) noexcept
+    void Remove(ID iID)
     {
         typename FactoryMap::iterator it = _classes.find(iID);
         if (it != _classes.end())
@@ -63,7 +66,7 @@ public:
      * @param iID - Идентификатор  зарегистрированного класса
      * @return true - зарегистрированный класс найден, иначе - false
      */
-    bool IsRegistered(ID iID) const noexcept
+    bool IsRegistered(ID iID) const
     {
         return _classes.find(iID) != _classes.end();
     }
@@ -73,7 +76,7 @@ public:
      * @param iID - Идентификатор зарегистрированного класса
      * @return Найденный объект зарегистрированного класса
      */
-    Base* Get(ID iID) noexcept
+    Base* Get(ID iID)
     {
         return IsRegistered(iID) ? _classes[iID].get() : nullptr;
     }
@@ -95,7 +98,7 @@ public:
             return std::make_shared<Derived>(std::forward<Args>(iArgs)...);
         }
         
-//        throw std::range_error(std::format("key [{}] is not registered", iID)); XCode - errror
+        throw std::range_error(std::format("key [{}] is not registered", iID));
         return nullptr;
     }
     
@@ -165,7 +168,7 @@ public:
      * @brief Удаление класса
      * @param iID - Идентификатор  класса
      */
-    void Remove(ID iID) noexcept
+    void Remove(ID iID)
     {
         typename FactoryMap::iterator it = _classes.find(iID);
         if (it != _classes.end())
@@ -177,7 +180,7 @@ public:
      * @param iID - Идентификатор  зарегистрированного класса
      * @return true - зарегистрированный класс найден, иначе - false
      */
-    bool IsRegistered(ID iID) const noexcept
+    bool IsRegistered(ID iID) const
     {
         return _classes.find(iID) != _classes.end();
     }
@@ -196,7 +199,7 @@ public:
             return _class(std::forward<Args>(iArgs)...); // Вызывается метод Register
         }
 
-//        throw std::range_error(std::format("key [{}] is not registered", iID));
+        throw std::range_error(std::format("key [{}] is not registered", iID));
         return nullptr;
     }
 

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <cassert>
 #include <map>
@@ -33,14 +33,14 @@ class IAbstractFactory : public IBase
     using FactoryMap = std::map<std::string, IAbstractFactory*>;
 
 public:
-	//static IAbstractFactory* Instance() noexcept;
+	//static IAbstractFactory* Instance();
     static IAbstractFactory* GetInstance(std::string className);
 
 	virtual void Start() = 0;
 	virtual void End() = 0;
 protected:
     void Register(std::string className, IAbstractFactory* factoryClass);
-	//IAbstractFactory() noexcept;
+	//IAbstractFactory();
 
 	//virtual ~IAbstractFactory();
 private:

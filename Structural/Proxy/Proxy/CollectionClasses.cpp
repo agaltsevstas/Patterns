@@ -43,7 +43,7 @@ public:
      * @param iID - Идентификатор  класса
      */
     template<class Derived>
-    void Add(const ID& iID) noexcept
+    void Add(const ID& iID)
     {
         static_assert(std::is_base_of<Base, Derived>::value, "Factory::registerType doesn't accept this type because doesn't derive from base class"); // Проверка Derived на принадлежность к Base
         _classes[iID] = &Register<Derived>; // Сохраняем адрес метода Register
@@ -53,7 +53,7 @@ public:
      * @brief Удаление класса
      * @param iID - Идентификатор  класса
      */
-    void Remove(const ID& iID) noexcept
+    void Remove(const ID& iID)
     {
         typename FactoryMap::iterator it = _classes.find(iID);
         if (it != _classes.end())
@@ -65,7 +65,7 @@ public:
      * @param iID - Идентификатор  зарегистрированного класса
      * @return true - зарегистрированный класс найден, иначе - false
      */
-    bool IsRegistered(const ID& iID) const noexcept
+    bool IsRegistered(const ID& iID) const
     {
         return _classes.find(iID) != _classes.end();
     }
@@ -122,13 +122,13 @@ void CollectionClassesProxy<ID, Base, Args...>::Add(const ID& iID)
 }
 
 template<typename ID, class Base, typename ...Args>
-void CollectionClassesProxy<ID, Base, Args...>::Remove(const ID& iID) noexcept
+void CollectionClassesProxy<ID, Base, Args...>::Remove(const ID& iID)
 {
     return ObjectFactory<ID, Base, Args...>::Instance().Remove(iID);
 }
 
 template<typename ID, class Base, typename ...Args>
-bool CollectionClassesProxy<ID, Base, Args...>::IsRegistered(const ID& iID) const noexcept
+bool CollectionClassesProxy<ID, Base, Args...>::IsRegistered(const ID& iID) const
 {
     return ObjectFactory<ID, Base, Args...>::Instance().IsRegistered(iID);
 }

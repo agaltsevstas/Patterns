@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -12,7 +12,7 @@ public:
 	virtual void Start() = 0;
 	virtual void End() = 0;
 
-	//static ExcludeFactoryClass* Instance() noexcept;
+	//static ExcludeFactoryClass* Instance();
 
 protected:
 	//ExcludeFactoryClass() { assert(_instance == nullptr); _instance = this; }

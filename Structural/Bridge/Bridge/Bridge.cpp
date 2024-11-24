@@ -44,7 +44,7 @@ public:
 class Circle : public Figure
 {
 public:
-    Circle(Renderer& renderer) noexcept :
+    Circle(Renderer& renderer) :
     _renderer(renderer)
     {
     }
@@ -62,7 +62,7 @@ private:
 class Rectangle : public Figure
 {
 public:
-    Rectangle(Renderer& renderer) noexcept :
+    Rectangle(Renderer& renderer) :
     _renderer(renderer)
     {
     }

@@ -8,14 +8,14 @@ struct NonCopyable
 {
     NonCopyable() = default;
     NonCopyable(const NonCopyable&) = delete;
-    NonCopyable& operator = (const NonCopyable&) = delete;
+    NonCopyable& operator=(const NonCopyable&) = delete;
 };
 
 struct NonMoveable
 {
     NonMoveable() = default;
-    NonMoveable(NonMoveable&&) = delete;
-    NonMoveable& operator = (NonCopyable&&) = delete;
+    NonMoveable(NonMoveable&&) noexcept = delete;
+    NonMoveable& operator=(NonCopyable&&) noexcept = delete;
 };
 
 /*
@@ -24,7 +24,7 @@ struct NonMoveable
 template<class Derived>
 struct Singleton : private NonCopyable, private NonMoveable // Делаем приватные конструкторы базовых классов
 {
-    static Derived &Instance() noexcept
+    static Derived &Instance()
     {
         static Derived instance;
         return instance;

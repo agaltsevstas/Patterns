@@ -12,7 +12,9 @@ class CollectionClassesProxy final
     CollectionClassesProxy() {};
     ~CollectionClassesProxy() {};
     CollectionClassesProxy(const CollectionClassesProxy&) = delete;
-    CollectionClassesProxy& operator = (const CollectionClassesProxy&) = delete;
+    CollectionClassesProxy(CollectionClassesProxy&&) noexcept = delete;
+    CollectionClassesProxy& operator=(const CollectionClassesProxy&) = delete;
+    CollectionClassesProxy& operator=(CollectionClassesProxy&&) noexcept = delete;
     
 public:
     /*!
@@ -35,14 +37,14 @@ public:
      * @brief Удаление класса
      * @param iID - Идентификатор  класса
      */
-    void Remove(const ID& iID) noexcept;
+    void Remove(const ID& iID);
 
     /*!
      * @brief Проверка на наличие класса по Id
      * @param iID - Идентификатор  зарегистрированного класса
      * @return true - зарегистрированный класс найден, иначе - false
      */
-    bool IsRegistered(const ID& iID) const noexcept;
+    bool IsRegistered(const ID& iID) const;
 
     /*!
      * @brief Создание объекта зарегистрированного класса

@@ -1,4 +1,4 @@
-﻿#ifndef Employee_hpp
+#ifndef Employee_hpp
 #define Employee_hpp
 
 #include <iostream>
@@ -7,16 +7,16 @@
 class Employee
 {
 public:
-    virtual void PrintName() const noexcept = 0;
+    virtual void PrintName() const = 0;
     virtual ~Employee() = default;
 };
 
 class Director : public Employee
 {
 public:
-    Director() noexcept;
-    void PrintName() const noexcept override;
-    const std::string& GetName() const noexcept;
+    Director();
+    void PrintName() const override;
+    const std::string& GetName() const;
 
 private:
     std::string _name;
@@ -25,9 +25,9 @@ private:
 class HRManager : public Employee
 {
 public:
-    HRManager() noexcept;
-    void PrintName() const noexcept override;
-    const std::string& GetName() const noexcept;
+    HRManager();
+    void PrintName() const override;
+    const std::string& GetName() const;
 
 private:
     class Impl;

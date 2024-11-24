@@ -1,14 +1,14 @@
-﻿#include "ExcludeFactoryClassTwo.h"
+#include "ExcludeFactoryClassTwo.h"
 
 #include "cassert"
 
 IExcludeFactoryClassTwo* IExcludeFactoryClassTwo::_instance = nullptr;
-IExcludeFactoryClassTwo* IExcludeFactoryClassTwo::Instance() noexcept
+IExcludeFactoryClassTwo* IExcludeFactoryClassTwo::Instance()
 {
 	return _instance;
 }
 
-IExcludeFactoryClassTwo::IExcludeFactoryClassTwo() noexcept
+IExcludeFactoryClassTwo::IExcludeFactoryClassTwo()
 {
 	assert(_instance == nullptr); _instance = this;
 }

@@ -17,11 +17,11 @@ int main()
 {
     Director director;
     director.PrintName();
-    auto& director_name = director.GetName();
+    [[maybe_unused]] auto& director_name = director.GetName();
 
     HRManager hrManager;
     hrManager.PrintName();
-    auto& hrManager_name = hrManager.GetName();
+    [[maybe_unused]] auto& hrManager_name = hrManager.GetName();
 
     return 0;
 }
